@@ -50,7 +50,7 @@ def main():
         if ext == "epub":
             divid = "div_cbz"
         downloadBtns = driver.find_elements_by_xpath(
-            "//div@id=" + divid + '/a[text()="下載"]'
+            "//div[@id='" + divid + "']//a[text()='下載']"
         )
         cnt = 0
         for btn in downloadBtns:
