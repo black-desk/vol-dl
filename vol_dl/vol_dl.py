@@ -50,8 +50,11 @@ def main():
                 '//a[contains(text(), "epub格式(小米/iPad)")]'
             ).click()
         downloadBtns = driver.find_elements_by_xpath('//a[text()="下載"]')
+        cnt = 0
         for btn in downloadBtns:
             link = btn.get_attribute("href")
             driver.get(link)
-            time.sleep(60 * 30)
+            cnt += 1
+            if cnt % 3 == 0:
+                time.sleep(60 * 30)
 
