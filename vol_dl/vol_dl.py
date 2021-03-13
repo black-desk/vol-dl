@@ -28,6 +28,8 @@ def main():
     path = os.path.abspath(path)
     ext = arguments["--format"]
 
+    divid = "div_cbz"
+
     options = webdriver.ChromeOptions()
     chrome_options = webdriver.ChromeOptions()
     prefs = {"download.default_directory": path}
@@ -46,10 +48,10 @@ def main():
         driver.get(url)
         time.sleep(5)
         if ext == "epub":
-            driver.find_element_by_xpath(
-                '//a[contains(text(), "epub格式(小米/iPad)")]'
-            ).click()
-        downloadBtns = driver.find_elements_by_xpath('//a[text()="下載"]')
+            divid = "div_cbz"
+        downloadBtns = driver.find_elements_by_xpath(
+            "//div@id=" + divid + '/a[text()="下載"]'
+        )
         cnt = 0
         for btn in downloadBtns:
             link = btn.get_attribute("href")
