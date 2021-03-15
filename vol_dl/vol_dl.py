@@ -55,6 +55,9 @@ def main():
         cnt = 0
         for btn in downloadBtns:
             link = btn.get_attribute("href")
+            tmplist = link.split("/")
+            if not 1000 <= int(tmplist[-4]) <= 1999:  # TODO
+                continue
             driver.get(link)
             cnt += 1
             if cnt % 3 == 0:
